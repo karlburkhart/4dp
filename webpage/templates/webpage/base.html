@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load webpage_extras %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %} {% projects_metadata 'title' %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block metaDescription %}
+        <meta name="description" content="{{ metadata.description }}">
+        <meta name="author" content="{{ metadata.author }}">
+    {% endblock %}
+    <!-- favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'webpage/img/favicon/apple-touch-icon.png' %}"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'webpage/img/favicon/favicon-32x32.png' %}"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'webpage/img/favicon/favicon-16x16.png' %}"/>
+        <link rel="manifest" href="{% static 'webpage/img/favicon/manifest.json' %}"/>
+        <link rel="mask-icon" href="{% static 'webpage/img/favicon/safari-pinned-tab.svg' %}" color="#00aba9"/>
+        <meta name="theme-color" content="#ffffff"/>
+    <!--favicons end -->
+
+    <!-- Bootstrap -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'webpage/libraries/jquery/jquery.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'webpage/bower_components/bootstrap/dist/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'webpage/bower_components/font-awesome/css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'webpage/bower_components/imageviewer/dist/viewer.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'webpage/css/main.min.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'webpage/css/style.css' %}" type="text/css"/>
+
+
+    <script type="text/javascript">
+        window.cookieconsent_options = {
+            "message":"This website uses cookies to ensure you get the best experience on our website",
+            "dismiss":"Got it!",
+            "learnMore":"More info",
+            //"link":"{% url 'webpage:staticpage' template='imprint' %}",
+            "theme":"dark-bottom"};
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+    <!-- Piwik -->
+        <script type="text/javascript">
+          var _paq = _paq || [];
+          /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function() {
+            var u="//piwik.apollo.arz.oeaw.ac.at/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', '67']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+          })();
+        </script>
+    <!-- End Piwik Code -->
+    {% block scriptHeader %}
+    {% endblock %}
+</head>
+<body>
+<header class="procustom-header">
+    <div class="container" id="procustom-affix">
+        <div class="logo-container">
+            <a href="{% url 'webpage:start' %}" class="navlink">
+                <!-- <img src="{% static 'webpage/img/test.png' %}" id="pro-logo" alt=""/> -->
+            </a>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+    	<div class="container" style="width:90%; padding-left:25px;" >
+    		<!-- Brand and toggle get grouped for better mobile display -->
+    		<div class="navbar-header">
+    			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    				<span class="sr-only">Toggle navigation</span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    			</button>
+
+    		</div>
+    		<!-- Collect the nav links, forms, and other content for toggling -->
+    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    			<ul class="nav navbar-nav navbar">
+    				<li class="active"><a href="{% url 'webpage:staticpage' template='index' %}" class="smooth-scroll">HOME</a></li>
+    				<li class="dropdown">
+    					<a class="dropdown-toggle" data-toggle="dropdown" href="">ABOUT THE PROJECT
+    					<span class="caret"></span></a>
+    					<ul class="dropdown-menu">
+    						<li><a href="{% url 'webpage:staticpage' template='about' %}">What is "A Puzzle in 4D"?</a></li>
+                <li><a href="{% url 'webpage:staticpage' template='team' %}">Team</a></li>
+                <li><a href="{% url 'webpage:staticpage' template='events' %}">Publications & Events</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="{% url 'webpage:staticpage' template='site' %}">Archaeological Site</a></li>
+                <li><a href="{% url 'webpage:staticpage' template='casestudy' %}">Case Study area F/I square j/21  </a></li>
+                <li><a href="https://www.zotero.org/4dpuzzle/items" target="_blank">Tell el-Daba Bibliography</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="{% url 'webpage:staticpage' template='archive' %}">Creation of the digital archive</a></li>
+                <li><a href="{% url 'webpage:staticpage' template='downloads' %}">Downloads</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="{% url 'webpage:staticpage' template='ais' %}">Archaeological Information System </a></li>
+    					</ul>
+    				</li>
+            <li class="dropdown">
+    					<a class="dropdown-toggle" data-toggle="dropdown" href="#">DIGITAL ARCHIVE
+    					<span class="caret"></span></a>
+    					<ul class="dropdown-menu">
+                <li><a href="{% url 'webpage:staticpage' template='explore' %}">Explore TD resources </a></li>
+    					</ul>
+    				</li>
+            <li class="dropdown">
+    					<a class="dropdown-toggle" data-toggle="dropdown" href="#">TELL EL-DABA 4D
+    					<span class="caret"></span></a>
+    					<ul class="dropdown-menu">
+                <li><a href="{% url 'webpage:staticpage' template='gisstudy' %}">GIS Project </a></li>
+                <!--<li><a href="{% url 'webpage:staticpage' template='hmc' %}">HMC+ </a></li>-->
+                <li><a href="{% url 'webpage:staticpage' template='reconstruct' %}">Reconstructions</a></li>
+                <li><a href="{% url 'webpage:staticpage' template='movies' %}">Movies</a></li>
+                {% if user.is_authenticated %}
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{% url 'bib:synczotero' %}">Import new Items from Zotero</a></li>
+                {% endif %}
+              </ul>
+    				</li>
+
+    			</ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        {% if user.is_authenticated %}
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                {{ user.get_username }}
+                            </a>
+                            <ul class="dropdown-menu procustom-dropdown-menu">
+                                <li><a href="{% url 'webpage:user_logout' %}">Log-Out</a></li>
+                            </ul>
+                        {% else %}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+                            </a>
+                            <ul class="dropdown-menu procustom-dropdown-menu">
+                                <li><a href="{% url 'webpage:user_login' %}">Log-In</a></li>
+                            </ul>
+                        {% endif %}
+                    </li>
+                </ul>
+    		</div><!-- /.navbar-collapse -->
+    	</div><!-- /.container-fluid -->
+    </nav>
+
+</header>
+<section class="main-content">
+    {% block procustom-index %}{% endblock %}
+    <div id="content">{% block content %}{% endblock %}</div>
+</section>
+<div style="text-align:center">
+    <span class="socialShare"><!-- The share buttons will be inserted here --></span>
+</div>
+<footer id="footer" class="clearfix">
+    <div class="container">
+        <div class="col-md-8">
+            <div class="row">
+							<img src="{% static 'webpage/media/4dpuzzle_logo_weiß.png' %}" width="50%" class=""><br><br>
+              <p>
+                <a href="{% url 'webpage:staticpage' template='license' %}">Terms of Use / License</a><br>
+              <a href="{% url 'webpage:staticpage' template='imprint' %}">Imprint</a>
+            </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+					<h3 class="text-success" style="margin-bottom: 20px;">Contact:</h3>
+          <p>Dr. Edeltraud Aspöck</p>
+          <p>OREA Institute for Oriental and European Archaeology<br>
+          Austrian Academy of Sciences<br>
+          Hollandstrasse 11-13, 1020 Vienna, Austria<br>
+          </p>
+					<p><a href="mailto:Edeltraud.Aspoeck@oeaw.ac.at">Edeltraud.Aspoeck@oeaw.ac.at</a></p>
+        </div>
+	</div>
+</footer>
+{% block scripts %}
+<script src="{% static 'webpage/bower_components/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'webpage/bower_components/bootstrap/dist/js/bootstrap.min.js'  %}"></script>
+<script src="{% static 'webpage/bower_components/imageviewer/dist/viewer.js' %}"></script>
+{% endblock %}
+{% block scripts2 %}
+{% endblock scripts2 %}
+<script>
+$(function () {
+    var options = {
+    url: 'originalUrl'};
+        $('.images').viewer(options);
+});
+
+</script>
+<noscript>
+    <img src="//piwik.apollo.arz.oeaw.ac.at/piwik.php?idsite=67" style="border:0;" alt=""/>
+</noscript>
+</body>
+</html>

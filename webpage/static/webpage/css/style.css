@@ -1,0 +1,46 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+
+}
+
+header {
+    flex: 0 0 auto;
+
+}
+
+.main-content{
+    flex: 1 0 auto;
+}
+
+footer{
+    flex: 0 0 auto;
+}
+.panel-default > .procustom-panel-heading {
+    background-color: #fff;
+    border-bottom: none;
+    text-align: center;
+}
+.table a, table a {
+     color: #3733fa;
+     text-decoration: none;
+}
+.table, table {
+    font-size: 15px;
+}
+
+a{
+  color:#83C653;
+}
+a:hover{
+  color:#83C653;
+}
+a:active{
+  color:#83C653;
+}
