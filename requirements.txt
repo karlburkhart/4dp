@@ -7,7 +7,7 @@ django-extensions==2.2.5
 django-filter==2.2.0
 django-super-deduper==0.1.2
 django-tables2==2.1.1
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 docx2txt==0.8
 idna==2.8
 isodate==0.6.0
